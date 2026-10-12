@@ -1,0 +1,557 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Trabajo | Academia Canal Ejecutivo</title>
+<meta name="description" content="Dashboard estrategico para el lanzamiento Academia Canal Ejecutivo 4 sesiones modelo Daxus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--bg:#F8FAFC;--surface:#fff;--border:#E2E8F0;--primary:#2563EB;--primary-h:#1D4ED8;--primary-l:#EFF6FF;--text-1:#0F172A;--text-2:#64748B;--text-3:#94A3B8;--sb-bg:#0F172A;--sb-b:rgba(255,255,255,.06);--sb-w:260px;--sb-cw:68px;--ok:#10B981;--warn:#F59E0B;--xl:26px;--lg:18px;--md:14px;--sm:12px;--xs:11px;--r1:8px;--r2:12px;--sh1:0 1px 3px rgba(0,0,0,.05);--sh2:0 4px 16px rgba(0,0,0,.06);--shg:0 4px 24px rgba(37,99,235,.12);--ez:cubic-bezier(.16,1,.3,1);--d:.25s}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text-1);display:flex;min-height:100vh;font-size:var(--md);line-height:1.5}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.sidebar{width:var(--sb-w);background:var(--sb-bg);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:200;transition:width var(--d) var(--ez);overflow:hidden}
+.sidebar.collapsed{width:var(--sb-cw)}
+.sb-brand{display:flex;align-items:center;gap:12px;padding:20px 16px;border-bottom:1px solid var(--sb-b);min-height:72px;flex-shrink:0}
+.sb-logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#2563EB,#60A5FA);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;flex-shrink:0;box-shadow:0 4px 12px rgba(37,99,235,.4)}
+.sb-txt{overflow:hidden;transition:opacity var(--d),width var(--d) var(--ez);white-space:nowrap}
+.sidebar.collapsed .sb-txt{opacity:0;width:0}
+.sb-txt strong{display:block;font-size:var(--sm);font-weight:700;color:#F8FAFC;letter-spacing:.3px}
+.sb-txt span{font-size:var(--xs);color:#64748B}
+.st-btn{position:absolute;top:20px;right:-12px;width:24px;height:24px;background:var(--surface);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-2);font-size:10px;box-shadow:var(--sh1);transition:all var(--d);z-index:10}
+.st-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.sidebar.collapsed .st-btn i{transform:rotate(180deg)}
+.sb-nav{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px 8px;display:flex;flex-direction:column;gap:2px}
+.nav-section{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#334155;padding:10px 10px 4px;white-space:nowrap;transition:opacity var(--d)}
+.sidebar.collapsed .nav-section{opacity:0}
+.nav-link{display:flex;align-items:center;gap:10px;padding:9px 10px;color:#64748B;text-decoration:none;font-size:var(--sm);font-weight:500;border-radius:var(--r1);transition:all var(--d);white-space:nowrap;cursor:pointer;border:none;background:transparent;width:100%;font-family:'Inter',sans-serif;text-align:left}
+.ni{width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.nl{transition:opacity var(--d)}
+.sidebar.collapsed .nl{opacity:0}
+.nav-link:hover{color:#E2E8F0;background:rgba(255,255,255,.07)}
+.nav-link.active{color:#93C5FD;background:rgba(37,99,235,.2);font-weight:600}
+.sb-footer{padding:12px 8px;border-top:1px solid var(--sb-b);flex-shrink:0;overflow:hidden}
+.live-b{display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,.04);border:1px solid var(--sb-b);border-radius:var(--r1)}
+.pdot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex-shrink:0;animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0)}}
+.live-txt{white-space:nowrap;overflow:hidden;transition:opacity var(--d)}
+.sidebar.collapsed .live-txt{opacity:0}
+.live-txt strong{display:block;font-size:var(--xs);color:#F1F5F9;font-weight:600}
+.live-txt span{font-size:10px;color:#475569}
+.main{margin-left:var(--sb-w);flex:1;min-width:0;display:flex;flex-direction:column;transition:margin-left var(--d) var(--ez)}
+.main.expanded{margin-left:var(--sb-cw)}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:sticky;top:0;z-index:100;flex-shrink:0}
+.topbar h1{font-size:var(--md);font-weight:700}
+.topbar p{font-size:var(--xs);color:var(--text-2)}
+.tbr{display:flex;align-items:center;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid var(--border);border-radius:20px;font-size:var(--xs);font-weight:600;color:var(--text-2);background:var(--bg)}
+.chip.p{background:var(--primary-l);border-color:rgba(37,99,235,.2);color:var(--primary)}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:var(--r1);font-size:var(--sm);font-weight:600;cursor:pointer;border:none;transition:all var(--d);font-family:'Inter',sans-serif}
+.btn-p{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(37,99,235,.3)}
+.btn-p:hover{background:var(--primary-h);transform:translateY(-1px)}
+.btn-g{background:transparent;color:var(--text-2);border:1px solid var(--border)}
+.btn-g:hover{background:var(--bg);color:var(--text-1)}
+.tab-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 32px;display:flex;flex-shrink:0;overflow-x:auto}
+.tab-btn{display:flex;align-items:center;gap:8px;padding:14px 18px;font-size:var(--sm);font-weight:600;color:var(--text-2);cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all var(--d);white-space:nowrap;font-family:'Inter',sans-serif}
+.tab-btn i{font-size:12px}
+.tab-btn:hover{color:var(--text-1)}
+.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
+.tc{background:var(--primary-l);color:var(--primary);font-size:var(--xs);font-weight:700;padding:1px 7px;border-radius:10px}
+.tab-btn.active .tc{background:var(--primary);color:#fff}
+.tab-panels{flex:1;overflow-y:auto;padding:28px 32px 60px}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fi .2s ease}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.sh{margin-bottom:20px}
+.sh h2{font-size:var(--lg);font-weight:800;letter-spacing:-.3px}
+.sh p{font-size:var(--sm);color:var(--text-2);margin-top:3px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin-bottom:24px}
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 16px;display:flex;align-items:center;gap:14px;transition:all var(--d)}
+.sc:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.si{width:44px;height:44px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ib{background:#EFF6FF;color:#2563EB}.ii{background:#EEF2FF;color:#4F46E5}.ie{background:#ECFDF5;color:#10B981}.ia{background:#FFFBEB;color:#D97706}.ip{background:#FAF5FF;color:#9333EA}
+.sv{font-size:24px;font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1}
+.sl{font-size:var(--xs);color:var(--text-2);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-top:3px}
+.prog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 20px;margin-bottom:24px}
+.prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.prog-top h3{font-size:var(--md);font-weight:700;display:flex;align-items:center;gap:8px}
+.prog-top h3 i{color:var(--primary)}
+.prog-ctr{font-family:'JetBrains Mono',monospace;font-size:var(--sm);font-weight:700;color:var(--primary);background:var(--primary-l);padding:3px 10px;border-radius:12px}
+.prog-track{width:100%;height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.prog-fill{height:100%;width:0%;background:linear-gradient(90deg,#2563EB,#60A5FA);border-radius:4px;transition:width .5s var(--ez)}
+.prog-ph{display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:var(--text-3);font-weight:500}
+.scroll-hint{display:flex;align-items:center;gap:6px;margin-bottom:10px;font-size:var(--xs);color:var(--text-3)}
+.scroll-hint i{animation:fr 1.5s infinite ease-in-out}
+@keyframes fr{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+.obj-row{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+.obj-row::-webkit-scrollbar{display:none}
+.oc{flex-shrink:0;width:248px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px;display:flex;flex-direction:column;gap:10px;transition:all var(--d)}
+.oc:hover{border-color:var(--primary);box-shadow:var(--shg);transform:translateY(-2px)}
+.oc-top{display:flex;justify-content:space-between;align-items:flex-start}
+.oc-icon{width:36px;height:36px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:16px}
+.oc-badge{font-size:var(--xs);font-weight:700;padding:2px 8px;border-radius:6px}
+.oc-title{font-size:var(--md);font-weight:700}
+.oc-desc{font-size:var(--sm);color:var(--text-2);line-height:1.5}
+.funnel{display:flex;flex-direction:column}
+.fi{display:grid;grid-template-columns:185px 1fr auto;align-items:center;gap:16px;padding:11px 16px;border:1px solid var(--border);border-bottom:none;background:var(--surface);transition:all var(--d)}
+.fi:first-child{border-radius:var(--r1) var(--r1) 0 0}
+.fi:last-child{border-bottom:1px solid var(--border);border-radius:0 0 var(--r1) var(--r1)}
+.fi:hover{background:var(--primary-l);border-color:rgba(37,99,235,.2)}
+.fn{display:flex;align-items:center;gap:10px;font-weight:700;font-size:var(--sm)}
+.fd{width:26px;height:26px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.fdesc{font-size:var(--sm);color:var(--text-2)}
+.ftag{font-size:var(--xs);font-weight:600;color:var(--primary);background:var(--primary-l);padding:4px 10px;border-radius:12px;white-space:nowrap}
+.sg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
+.scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all var(--d)}
+.scard:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.scard-top{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start}
+.snum{width:32px;height:32px;border-radius:var(--r1);background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--md)}
+.stitle{font-size:var(--md);font-weight:800;margin-top:8px}
+.ssub{font-size:var(--xs);font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.smeta{display:flex;gap:6px;flex-direction:column;align-items:flex-end}
+.sdate{font-size:var(--xs);font-weight:700;color:var(--primary);background:var(--primary-l);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.sdur{font-size:var(--xs);color:var(--text-2)}
+.sbody{display:grid;grid-template-columns:1fr 1fr}
+.scol{padding:14px 16px}
+.scol:first-child{border-right:1px solid var(--border)}
+.scol-h{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.slist{list-style:none;display:flex;flex-direction:column;gap:5px}
+.slist li{font-size:var(--sm);color:var(--text-2);display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.slist li i{color:var(--primary);font-size:10px;margin-top:3px;flex-shrink:0}
+.scol.dv{background:#FAFCFF}
+.scol.dv .slist li i{color:var(--ok)}
+.fbar{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:12px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.fg{display:flex;align-items:center;gap:6px}
+.flbl{font-size:var(--xs);font-weight:700;color:var(--text-2);white-space:nowrap}
+.fsel{background:var(--bg);border:1px solid var(--border);border-radius:var(--r1);padding:6px 10px;font-size:var(--sm);font-weight:600;color:var(--text-1);outline:none;cursor:pointer;font-family:'Inter',sans-serif}
+.fsel:focus{border-color:var(--primary)}
+.fsrch{flex:1;min-width:180px;position:relative}
+.fsrch input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:var(--r1);padding:6px 10px 6px 30px;font-size:var(--sm);outline:none;font-family:'Inter',sans-serif}
+.fsrch input:focus{border-color:var(--primary)}
+.sico{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-3);font-size:12px}
+.twrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
+.dtbl{width:100%;border-collapse:collapse;font-size:var(--sm)}
+.dtbl thead{background:var(--bg);border-bottom:1px solid var(--border)}
+.dtbl th{padding:10px 14px;font-weight:700;color:var(--text-2);text-transform:uppercase;font-size:var(--xs);letter-spacing:.5px;white-space:nowrap;text-align:left}
+.dtbl td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
+.dtbl tbody tr:last-child td{border-bottom:none}
+.dtbl tbody tr:hover{background:var(--bg)}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:10px;font-size:var(--xs);font-weight:700;cursor:pointer;user-select:none;transition:all var(--d);white-space:nowrap}
+.badge:hover{filter:brightness(.9);transform:scale(.97)}
+.bpend{background:#FEF2F2;color:#DC2626}.bprog{background:#FFFBEB;color:#D97706}.brev{background:var(--primary-l);color:var(--primary)}.bdone{background:#ECFDF5;color:#059669}
+.pbadge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px}
+.palta{background:#FEE2E2;color:#B91C1C}.pmedia{background:#FEF3C7;color:#B45309}.pbaja{background:#F1F5F9;color:#64748B}
+.pg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.pgc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:16px;display:flex;flex-direction:column;gap:10px;transition:all var(--d)}
+.pgc:hover{border-color:var(--primary);box-shadow:var(--shg);transform:translateY(-2px)}
+.pgslug{font-family:'JetBrains Mono',monospace;font-size:var(--sm);font-weight:600;color:var(--primary);background:var(--primary-l);padding:3px 8px;border-radius:5px;word-break:break-all}
+.pgrow{display:flex;gap:6px;font-size:var(--sm)}
+.pgkey{font-weight:700;color:var(--text-2);min-width:58px;flex-shrink:0}
+.fbox{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 20px;margin-bottom:14px}
+.ftitle{font-size:var(--md);font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.ftitle i{color:var(--primary)}
+.fnodes{display:flex;align-items:center;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.fnodes::-webkit-scrollbar{display:none}
+.fnode{background:var(--bg);border:1px solid var(--border);padding:8px 14px;border-radius:var(--r1);font-size:var(--sm);font-weight:600;display:flex;align-items:center;gap:7px;white-space:nowrap;transition:all var(--d)}
+.fnode:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
+.fnode i{color:var(--primary)}
+.farr{color:var(--text-3);font-size:12px;flex-shrink:0}
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:12px}
+.tcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:14px 16px;display:flex;align-items:center;gap:12px;transition:all var(--d)}
+.tcard:hover{border-color:var(--primary);box-shadow:var(--shg);transform:translateY(-1px)}
+.tlogo{width:40px;height:40px;border-radius:var(--r1);background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tname{font-size:var(--md);font-weight:700}
+.trole{font-size:var(--xs);color:var(--text-2);margin-top:1px}
+.tok{font-size:10px;font-weight:700;color:var(--ok);display:flex;align-items:center;gap:3px;margin-top:3px}
+.kg{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.kc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:16px 18px;transition:all var(--d)}
+.kc:hover{border-color:var(--primary);box-shadow:var(--shg)}
+.kclbl{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-2)}
+.kcval{font-size:22px;font-weight:800;font-family:'JetBrains Mono',monospace;margin:5px 0;letter-spacing:-.5px}
+.kcnote{font-size:var(--xs);color:var(--primary);font-weight:600;display:flex;align-items:center;gap:4px}
+.ckg{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:10px}
+.cki{background:var(--surface);border:1px solid var(--border);border-radius:var(--r1);padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all var(--d);user-select:none}
+.cki:hover{background:var(--bg)}
+.cki.done{background:#F0FDF4;border-color:#BBF7D0}
+.cki.done .ckt{text-decoration:line-through;color:var(--text-2)}
+.ckcb{width:18px;height:18px;border-radius:5px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;background:var(--surface);flex-shrink:0;transition:all var(--d);font-size:9px}
+.cki.done .ckcb{background:var(--ok);border-color:var(--ok);color:#fff}
+.ckt{font-size:var(--sm);font-weight:600;transition:all var(--d)}
+.gap{margin-bottom:24px}
+.divider{border:none;border-top:1px solid var(--border);margin:24px 0}
+.mob{display:none;position:fixed;bottom:20px;right:20px;width:48px;height:48px;border-radius:50%;background:var(--primary);color:#fff;border:none;font-size:18px;box-shadow:0 4px 14px rgba(37,99,235,.4);z-index:300;cursor:pointer;align-items:center;justify-content:center}
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150}
+@media(max-width:1024px){
+.sidebar{transform:translateX(-100%);width:var(--sb-w)!important}
+.sidebar.open{transform:translateX(0)}
+.ov.active{display:block}
+.main{margin-left:0!important}
+.mob{display:flex}
+.st-btn{display:none}
+.tab-panels{padding:20px 16px 60px}
+.topbar{padding:0 16px}
+.sg-grid{grid-template-columns:1fr}
+.sbody{grid-template-columns:1fr}
+.scol:first-child{border-right:none;border-bottom:1px solid var(--border)}
+.fi{grid-template-columns:1fr;gap:6px}
+}
+</style>
+</head>
+<body>
+<div class="ov" id="ov"></div>
+<button class="mob" id="mobBtn"><i class="fa-solid fa-bars"></i></button>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sb-brand">
+    <div class="sb-logo"><i class="fa-solid fa-graduation-cap"></i></div>
+    <div class="sb-txt"><strong>Canal Ejecutivo</strong><span>Academia &middot; Plan Lanzamiento</span></div>
+  </div>
+  <div class="st-btn" id="stBtn"><i class="fa-solid fa-chevron-left"></i></div>
+  <nav class="sb-nav">
+    <div class="nav-section">Vistas</div>
+    <button class="nav-link active" data-tab="dashboard"><span class="ni"><i class="fa-solid fa-chart-pie"></i></span><span class="nl">Dashboard</span></button>
+    <button class="nav-link" data-tab="sesiones"><span class="ni"><i class="fa-solid fa-calendar-days"></i></span><span class="nl">Sesiones</span></button>
+    <button class="nav-link" data-tab="tareas"><span class="ni"><i class="fa-solid fa-list-check"></i></span><span class="nl">Tareas</span></button>
+    <button class="nav-link" data-tab="config"><span class="ni"><i class="fa-solid fa-sliders"></i></span><span class="nl">Configuraci&oacute;n</span></button>
+    <div class="nav-section" style="margin-top:8px">Acceso R&aacute;pido</div>
+    <button class="nav-link" data-tab="dashboard"><span class="ni"><i class="fa-solid fa-bullseye"></i></span><span class="nl">Objetivos</span></button>
+    <button class="nav-link" data-tab="dashboard"><span class="ni"><i class="fa-solid fa-filter"></i></span><span class="nl">Embudo</span></button>
+    <button class="nav-link" data-tab="config"><span class="ni"><i class="fa-solid fa-gauge-high"></i></span><span class="nl">KPIs</span></button>
+  </nav>
+  <div class="sb-footer">
+    <div class="live-b">
+      <div class="pdot"></div>
+      <div class="live-txt"><strong>15 OCT 2026 &middot; 9PM</strong><span>Lima, Per&uacute; (GMT-5)</span></div>
+    </div>
+  </div>
+</aside>
+
+<div class="main" id="main">
+  <div class="topbar">
+    <div><h1>Plan de Trabajo Web</h1><p>Academia Canal Ejecutivo &mdash; Modelo Inmersi&oacute;n Daxus</p></div>
+    <div class="tbr">
+      <span class="chip p"><i class="fa-solid fa-rocket"></i> 4 Sesiones &middot; 15 Oct</span>
+      <button class="btn btn-g" onclick="window.print()"><i class="fa-solid fa-print"></i> Imprimir</button>
+      <button class="btn btn-p" onclick="switchTab('tareas')"><i class="fa-solid fa-list-check"></i> Tareas</button>
+    </div>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</button>
+    <button class="tab-btn" data-tab="sesiones"><i class="fa-solid fa-calendar-days"></i> Sesiones <span class="tc">4</span></button>
+    <button class="tab-btn" data-tab="tareas"><i class="fa-solid fa-list-check"></i> Tareas <span class="tc" id="tCount">43</span></button>
+    <button class="tab-btn" data-tab="config"><i class="fa-solid fa-sliders"></i> Configuraci&oacute;n</button>
+  </div>
+
+  <div class="tab-panels">
+    <!-- TAB DASHBOARD -->
+    <div class="tab-panel active" id="tab-dashboard">
+      <div class="stats">
+        <div class="sc"><div class="si ib"><i class="fa-solid fa-chart-pie"></i></div><div><div class="sv" id="pctTxt">0%</div><div class="sl">Progreso</div></div></div>
+        <div class="sc"><div class="si ii"><i class="fa-solid fa-calendar-check"></i></div><div><div class="sv">4</div><div class="sl">Sesiones en Vivo</div></div></div>
+        <div class="sc"><div class="si ie"><i class="fa-solid fa-file-lines"></i></div><div><div class="sv">11</div><div class="sl">P&aacute;ginas Web</div></div></div>
+        <div class="sc"><div class="si ia"><i class="fa-solid fa-cubes"></i></div><div><div class="sv">9</div><div class="sl">Integraciones</div></div></div>
+        <div class="sc"><div class="si ip"><i class="fa-solid fa-layer-group"></i></div><div><div class="sv">4</div><div class="sl">Fases</div></div></div>
+      </div>
+
+      <div class="prog-card">
+        <div class="prog-top">
+          <h3><i class="fa-solid fa-bars-progress"></i> Progreso de Ejecuci&oacute;n</h3>
+          <span class="prog-ctr" id="pctCtr">0 de 43 Tareas</span>
+        </div>
+        <div class="prog-track"><div class="prog-fill" id="pctBar"></div></div>
+        <div class="prog-ph"><span>Fase 1: Estructura</span><span>Fase 2: Captaci&oacute;n</span><span>Fase 3: Checkout</span><span>Fase 4: Lanzamiento</span></div>
+      </div>
+
+      <div class="gap">
+        <div class="sh"><h2>Objetivos Estrat&eacute;gicos</h2><p>Metas cuantitativas y estrat&eacute;gicas del lanzamiento</p></div>
+        <div class="scroll-hint"><i class="fa-solid fa-arrow-right"></i> Desliza para ver todos</div>
+        <div class="obj-row">
+          <div class="oc"><div class="oc-top"><div class="oc-icon" style="background:#EFF6FF;color:#2563EB"><i class="fa-solid fa-magnet"></i></div><span class="oc-badge" style="background:#DBEAFE;color:#1D4ED8">Tr&aacute;fico</span></div><div class="oc-title">Captaci&oacute;n de Leads</div><div class="oc-desc">Generar prospectos cualificados a trav&eacute;s de campa&ntilde;as de tr&aacute;fico pagado y org&aacute;nico hacia la oferta gratuita.</div></div>
+          <div class="oc"><div class="oc-top"><div class="oc-icon" style="background:#ECFDF5;color:#10B981"><i class="fa-solid fa-id-card"></i></div><span class="oc-badge" style="background:#D1FAE5;color:#047857">Conversi&oacute;n LP</span></div><div class="oc-title">Registro a Sesiones Gratuitas</div><div class="oc-desc">Tasa de conversi&oacute;n superior al 35% en la landing mediante formularios simplificados y copy de alto impacto.</div></div>
+          <div class="oc"><div class="oc-top"><div class="oc-icon" style="background:#F0FFF4;color:#16A34A"><i class="fa-brands fa-whatsapp"></i></div><span class="oc-badge" style="background:#DCFCE7;color:#15803D">Comunidad</span></div><div class="oc-title">Grupo VIP WhatsApp</div><div class="oc-desc">Centralizar registrados en grupos VIP con recordatorios automatizados para maximizar la asistencia a sesiones.</div></div>
+          <div class="oc"><div class="oc-top"><div class="oc-icon" style="background:#FAF5FF;color:#9333EA"><i class="fa-solid fa-graduation-cap"></i></div><span class="oc-badge" style="background:#F3E8FF;color:#6B21A8">Monetizaci&oacute;n</span></div><div class="oc-title">Conversi&oacute;n a Academia</div><div class="oc-desc">Transicionar alumnos de sesiones gratuitas a miembros de pago con oferta irresistible de lanzamiento.</div></div>
+          <div class="oc"><div class="oc-top"><div class="oc-icon" style="background:#FFFBEB;color:#D97706"><i class="fa-solid fa-gears"></i></div><span class="oc-badge" style="background:#FDE68A;color:#B45309">Eficiencia</span></div><div class="oc-title">Automatizaci&oacute;n 100%</div><div class="oc-desc">Orquestar flujos aut&oacute;nomos con Make entre Elementor, WhatsApp API, WooCommerce y LearnPress.</div></div>
+          <div class="oc"><div class="oc-top"><div class="oc-icon" style="background:#FFF1F2;color:#E11D48"><i class="fa-solid fa-share-nodes"></i></div><span class="oc-badge" style="background:#FFE4E6;color:#BE123C">Viralidad</span></div><div class="oc-title">Sistema de Referidos</div><div class="oc-desc">Incentivar participantes a invitar colegas a cambio de accesos exclusivos y recursos complementarios.</div></div>
+          <div class="oc"><div class="oc-top"><div class="oc-icon" style="background:#F5F3FF;color:#7C3AED"><i class="fa-solid fa-chart-line"></i></div><span class="oc-badge" style="background:#EDE9FE;color:#5B21B6">Analytics</span></div><div class="oc-title">Medici&oacute;n de Resultados</div><div class="oc-desc">Trazabilidad completa con Meta CAPI, Google Analytics 4 y UTMs en cada punto de contacto del funnel.</div></div>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="sh"><h2>Embudo de Conversi&oacute;n &mdash; Modelo Daxus</h2><p>Viaje del usuario desde el primer impacto hasta la recomendaci&oacute;n activa</p></div>
+      <div class="funnel">
+        <div class="fi"><div class="fn"><div class="fd">1</div> REDES SOCIALES</div><div class="fdesc">Atracci&oacute;n por Meta Ads, LinkedIn, YouTube Shorts y contenido org&aacute;nico de alto valor.</div><div class="ftag"><i class="fa-solid fa-bullhorn"></i> Top of Funnel</div></div>
+        <div class="fi"><div class="fn"><div class="fd">2</div> LANDING PAGE</div><div class="fdesc">P&aacute;gina optimizada (/inmersion-ia/) con promesa clara, temario de 4 sesiones y sin distracciones.</div><div class="ftag"><i class="fa-solid fa-globe"></i> Elementor</div></div>
+        <div class="fi"><div class="fn"><div class="fd">3</div> REGISTRO GRATUITO</div><div class="fdesc">Captura de Nombre, Correo y WhatsApp con validaci&oacute;n instant&aacute;nea y confirmaci&oacute;n autom&aacute;tica.</div><div class="ftag"><i class="fa-solid fa-user-plus"></i> Lead Capture</div></div>
+        <div class="fi"><div class="fn"><div class="fd">4</div> WHATSAPP VIP</div><div class="fdesc">Redirecci&oacute;n autom&aacute;tica con bot&oacute;n de un clic a la comunidad cerrada de WhatsApp.</div><div class="ftag"><i class="fa-brands fa-whatsapp"></i> Comunidad</div></div>
+        <div class="fi"><div class="fn"><div class="fd">5</div> 4 SESIONES GRATIS</div><div class="fdesc">Transmisiones privadas en YouTube (15, 17, 20 y 22 Oct &ndash; 9:00 PM) con plantillas descargables.</div><div class="ftag"><i class="fa-brands fa-youtube"></i> Entrega de Valor</div></div>
+        <div class="fi"><div class="fn"><div class="fd">6</div> EXPERIENCIA / VALOR</div><div class="fdesc">Demostraci&oacute;n pr&aacute;ctica en vivo, resoluci&oacute;n de dudas y casos de &eacute;xito reales de Canal Ejecutivo.</div><div class="ftag"><i class="fa-solid fa-award"></i> Autoridad</div></div>
+        <div class="fi"><div class="fn"><div class="fd">7</div> OFERTA ACADEMIA</div><div class="fdesc">Apertura de inscripciones en Sesi&oacute;n 3 y 4 con bono por pronta acci&oacute;n y garant&iacute;a total.</div><div class="ftag"><i class="fa-solid fa-fire"></i> Pitch de Ventas</div></div>
+        <div class="fi"><div class="fn"><div class="fd">8</div> CHECKOUT SIMPLE</div><div class="fdesc">Proceso de compra en un solo paso (/academia/pago/) integrado a pasarelas v&iacute;a WooCommerce.</div><div class="ftag"><i class="fa-solid fa-credit-card"></i> WooCommerce</div></div>
+        <div class="fi"><div class="fn"><div class="fd">9</div> MEMBRES&Iacute;A ACTIVA</div><div class="fdesc">Creaci&oacute;n instant&aacute;nea de credenciales y enrolamiento en LearnPress sin intervenci&oacute;n manual.</div><div class="ftag"><i class="fa-solid fa-user-check"></i> LearnPress LMS</div></div>
+        <div class="fi"><div class="fn"><div class="fd">10</div> BIENVENIDA &amp; ONBOARDING</div><div class="fdesc">P&aacute;gina de inducci&oacute;n con video de primeros pasos, acceso a soporte y comunidad privada.</div><div class="ftag"><i class="fa-solid fa-envelope-open-text"></i> Email + Web</div></div>
+        <div class="fi" style="border:2px solid var(--primary);background:var(--primary-l);border-radius:0 0 var(--r1) var(--r1);border-top:none"><div class="fn"><div class="fd">11</div> SISTEMA DE REFERIDOS</div><div class="fdesc">Cada alumno recibe su enlace &uacute;nico para invitar pares y desbloquear m&oacute;dulos premium.</div><div class="ftag" style="background:var(--primary);color:#fff"><i class="fa-solid fa-arrows-spin"></i> Crecimiento Viral</div></div>
+      </div>
+    </div>
+    <!-- TAB SESIONES -->
+    <div class="tab-panel" id="tab-sesiones">
+      <div class="sh"><h2>Cronograma &mdash; 4 Sesiones de Trabajo</h2><p>Despliegue cronol&oacute;gico de las sesiones en vivo (2 horas cada una)</p></div>
+      <div class="sg-grid">
+        <!-- SESION 1 -->
+        <div class="scard">
+          <div class="scard-top"><div><div class="snum">1</div><div class="stitle">SESI&Oacute;N 1</div><div class="ssub">Planificaci&oacute;n y Estructura</div></div><div class="smeta"><span class="sdate"><i class="fa-regular fa-calendar"></i> 15 OCT 2026 &middot; 9PM</span><span class="sdur"><i class="fa-regular fa-clock"></i> 2 Horas</span></div></div>
+          <div class="sbody">
+            <div class="scol"><div class="scol-h"><i class="fa-solid fa-list-check"></i> Tareas</div><ul class="slist"><li><i class="fa-solid fa-circle-dot"></i> Definir propuesta de valor central</li><li><i class="fa-solid fa-circle-dot"></i> Definir p&uacute;blico objetivo y avatar profesional</li><li><i class="fa-solid fa-circle-dot"></i> Definir oferta irresistible de la Academia</li><li><i class="fa-solid fa-circle-dot"></i> Definir estructura del funnel paso a paso</li><li><i class="fa-solid fa-circle-dot"></i> Definir recorrido y experiencia del usuario</li><li><i class="fa-solid fa-circle-dot"></i> Definir CTAs principales y puntos de acci&oacute;n</li><li><i class="fa-solid fa-circle-dot"></i> Definir mapa de p&aacute;ginas necesarias</li><li><i class="fa-solid fa-circle-dot"></i> Definir herramientas de medici&oacute;n y tracking</li></ul></div>
+            <div class="scol dv"><div class="scol-h"><i class="fa-solid fa-box-archive"></i> Entregables</div><ul class="slist"><li><i class="fa-solid fa-circle-check"></i> Arquitectura visual y mapa del funnel</li><li><i class="fa-solid fa-circle-check"></i> Mapa esquem&aacute;tico de p&aacute;ginas a crear</li><li><i class="fa-solid fa-circle-check"></i> Documento de propuesta de valor y avatar</li><li><i class="fa-solid fa-circle-check"></i> Matriz de m&eacute;tricas y estructura de conversi&oacute;n</li></ul></div>
+          </div>
+        </div>
+        <!-- SESION 2 -->
+        <div class="scard">
+          <div class="scard-top"><div><div class="snum">2</div><div class="stitle">SESI&Oacute;N 2</div><div class="ssub">Landing &amp; Captaci&oacute;n</div></div><div class="smeta"><span class="sdate"><i class="fa-regular fa-calendar"></i> 17 OCT 2026 &middot; 9PM</span><span class="sdur"><i class="fa-regular fa-clock"></i> 2 Horas</span></div></div>
+          <div class="sbody">
+            <div class="scol"><div class="scol-h"><i class="fa-solid fa-list-check"></i> Tareas</div><ul class="slist"><li><i class="fa-solid fa-circle-dot"></i> Crear landing page de registro en Elementor</li><li><i class="fa-solid fa-circle-dot"></i> Dise&ntilde;ar hero section de alto impacto visual</li><li><i class="fa-solid fa-circle-dot"></i> Redactar y estructurar secci&oacute;n de beneficios</li><li><i class="fa-solid fa-circle-dot"></i> Maquetar programa detallado de las 4 sesiones</li><li><i class="fa-solid fa-circle-dot"></i> Integrar formulario de captaci&oacute;n optimizado</li><li><i class="fa-solid fa-circle-dot"></i> Crear p&aacute;gina de confirmaci&oacute;n (/confirmacion/)</li><li><i class="fa-solid fa-circle-dot"></i> Configurar CTAs estrat&eacute;gicos y microcopys</li><li><i class="fa-solid fa-circle-dot"></i> Integrar enlace din&aacute;mico a WhatsApp</li><li><i class="fa-solid fa-circle-dot"></i> Optimizar renderizado responsive en m&oacute;vil</li><li><i class="fa-solid fa-circle-dot"></i> Configurar eventos b&aacute;sicos de tracking</li></ul></div>
+            <div class="scol dv"><div class="scol-h"><i class="fa-solid fa-box-archive"></i> Entregables</div><ul class="slist"><li><i class="fa-solid fa-circle-check"></i> Landing (/inmersion-ia/) 100% funcional</li><li><i class="fa-solid fa-circle-check"></i> Formulario de registro activo y validado</li><li><i class="fa-solid fa-circle-check"></i> P&aacute;gina de agradecimiento y confirmaci&oacute;n</li><li><i class="fa-solid fa-circle-check"></i> Enlace directo a grupo VIP WhatsApp</li><li><i class="fa-solid fa-circle-check"></i> Pixeles instalados con evento Lead</li></ul></div>
+          </div>
+        </div>
+        <!-- SESION 3 -->
+        <div class="scard">
+          <div class="scard-top"><div><div class="snum">3</div><div class="stitle">SESI&Oacute;N 3</div><div class="ssub">Academia, Checkout &amp; Automatizaci&oacute;n</div></div><div class="smeta"><span class="sdate"><i class="fa-regular fa-calendar"></i> 20 OCT 2026 &middot; 9PM</span><span class="sdur"><i class="fa-regular fa-clock"></i> 2 Horas</span></div></div>
+          <div class="sbody">
+            <div class="scol"><div class="scol-h"><i class="fa-solid fa-list-check"></i> Tareas</div><ul class="slist"><li><i class="fa-solid fa-circle-dot"></i> Crear landing oficial de la Academia (/academia/)</li><li><i class="fa-solid fa-circle-dot"></i> Presentar tabla de beneficios de la membres&iacute;a</li><li><i class="fa-solid fa-circle-dot"></i> Mostrar cat&aacute;logo y rutas de cursos en LearnPress</li><li><i class="fa-solid fa-circle-dot"></i> Estructurar oferta especial por lanzamiento</li><li><i class="fa-solid fa-circle-dot"></i> Crear producto suscripci&oacute;n en WooCommerce</li><li><i class="fa-solid fa-circle-dot"></i> Configurar pasarela y checkout sin fricci&oacute;n</li><li><i class="fa-solid fa-circle-dot"></i> Configurar asignaci&oacute;n autom&aacute;tica en LearnPress</li><li><i class="fa-solid fa-circle-dot"></i> Crear p&aacute;gina de bienvenida y primeros pasos</li><li><i class="fa-solid fa-circle-dot"></i> Configurar escenarios de Make (Webhooks)</li><li><i class="fa-solid fa-circle-dot"></i> Configurar emails transaccionales</li><li><i class="fa-solid fa-circle-dot"></i> Crear flujo de seguimiento post-sesi&oacute;n</li></ul></div>
+            <div class="scol dv"><div class="scol-h"><i class="fa-solid fa-box-archive"></i> Entregables</div><ul class="slist"><li><i class="fa-solid fa-circle-check"></i> P&aacute;gina de ventas de Academia terminada</li><li><i class="fa-solid fa-circle-check"></i> Producto configurado en WooCommerce</li><li><i class="fa-solid fa-circle-check"></i> Checkout activo con m&eacute;todos de pago</li><li><i class="fa-solid fa-circle-check"></i> Enrolamiento directo en LearnPress</li><li><i class="fa-solid fa-circle-check"></i> Escenarios de Make probados en tiempo real</li></ul></div>
+          </div>
+        </div>
+        <!-- SESION 4 -->
+        <div class="scard">
+          <div class="scard-top"><div><div class="snum">4</div><div class="stitle">SESI&Oacute;N 4</div><div class="ssub">Lanzamiento, Anal&iacute;tica &amp; Optimizaci&oacute;n</div></div><div class="smeta"><span class="sdate"><i class="fa-regular fa-calendar"></i> 22 OCT 2026 &middot; 9PM</span><span class="sdur"><i class="fa-regular fa-clock"></i> 2 Horas</span></div></div>
+          <div class="sbody">
+            <div class="scol"><div class="scol-h"><i class="fa-solid fa-list-check"></i> Tareas</div><ul class="slist"><li><i class="fa-solid fa-circle-dot"></i> Auditor&iacute;a completa end-to-end del funnel</li><li><i class="fa-solid fa-circle-dot"></i> Prueba real de registro con m&uacute;ltiples correos</li><li><i class="fa-solid fa-circle-dot"></i> Verificaci&oacute;n de entrega de correos (DKIM/SPF)</li><li><i class="fa-solid fa-circle-dot"></i> Verificaci&oacute;n de flujos y links de WhatsApp</li><li><i class="fa-solid fa-circle-dot"></i> Simulaci&oacute;n de compra y transacci&oacute;n de prueba</li><li><i class="fa-solid fa-circle-dot"></i> Comprobar auto-login y acceso al aula virtual</li><li><i class="fa-solid fa-circle-dot"></i> Revisi&oacute;n rigurosa de experiencia m&oacute;vil</li><li><i class="fa-solid fa-circle-dot"></i> Configurar conversiones en Google Analytics 4</li><li><i class="fa-solid fa-circle-dot"></i> Test de eventos de Meta Pixel &amp; CAPI</li><li><i class="fa-solid fa-circle-dot"></i> Establecer KPIs y metas de conversi&oacute;n</li><li><i class="fa-solid fa-circle-dot"></i> Montar dashboard de m&eacute;tricas en tiempo real</li><li><i class="fa-solid fa-circle-dot"></i> Configurar sistema de referidos en /referidos/</li><li><i class="fa-solid fa-circle-dot"></i> Preparar checklist final de lanzamiento</li><li><i class="fa-solid fa-circle-dot"></i> Protocolo de optimizaci&oacute;n y contingencia</li></ul></div>
+            <div class="scol dv"><div class="scol-h"><i class="fa-solid fa-box-archive"></i> Entregables</div><ul class="slist"><li><i class="fa-solid fa-circle-check"></i> Funnel blindado para tr&aacute;fico masivo</li><li><i class="fa-solid fa-circle-check"></i> GA4 y Pixel validados con Tag Assistant</li><li><i class="fa-solid fa-circle-check"></i> Tablero de control y KPIs configurado</li><li><i class="fa-solid fa-circle-check"></i> Sistema de referidos listo para operar</li><li><i class="fa-solid fa-circle-check"></i> Checklist final aprobado para lanzamiento</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TAB TAREAS -->
+    <div class="tab-panel" id="tab-tareas">
+      <div class="sh"><h2>Matriz Interactiva de Tareas</h2><p>Haz clic en el estado para actualizar el progreso en tiempo real</p></div>
+      <div class="fbar">
+        <div class="fg"><label class="flbl"><i class="fa-solid fa-calendar-day"></i> Sesi&oacute;n</label>
+          <select class="fsel" id="fSes" onchange="renderT()"><option value="all">Todas</option><option value="Ses1">Sesi&oacute;n 1 (15 Oct)</option><option value="Ses2">Sesi&oacute;n 2 (17 Oct)</option><option value="Ses3">Sesi&oacute;n 3 (20 Oct)</option><option value="Ses4">Sesi&oacute;n 4 (22 Oct)</option></select>
+        </div>
+        <div class="fg"><label class="flbl"><i class="fa-solid fa-filter"></i> Estado</label>
+          <select class="fsel" id="fEst" onchange="renderT()"><option value="all">Todos</option><option value="Pendiente">Pendiente</option><option value="En progreso">En progreso</option><option value="En revision">En revisi&oacute;n</option><option value="Completado">Completado</option></select>
+        </div>
+        <div class="fg"><label class="flbl"><i class="fa-solid fa-flag"></i> Prioridad</label>
+          <select class="fsel" id="fPri" onchange="renderT()"><option value="all">Todas</option><option value="Alta">Alta</option><option value="Media">Media</option><option value="Baja">Baja</option></select>
+        </div>
+        <div class="fsrch"><i class="fa-solid fa-magnifying-glass sico"></i><input type="text" id="fQ" placeholder="Buscar tarea o responsable..." onkeyup="renderT()"></div>
+      </div>
+      <div class="twrap"><table class="dtbl"><thead><tr><th>Fase</th><th>Tarea</th><th>Responsable</th><th>Sesi&oacute;n</th><th>Prioridad</th><th>Estado</th><th>Entregable</th></tr></thead><tbody id="tbody"></tbody></table></div>
+    </div>
+
+    <!-- TAB CONFIG -->
+    <div class="tab-panel" id="tab-config">
+      <div class="gap">
+        <div class="sh"><h2>Arquitectura Web &mdash; 11 URLs</h2><p>Estructura de p&aacute;ginas, objetivos de conversi&oacute;n y CTAs en WordPress</p></div>
+        <div class="pg-grid">
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/inmersion-ia/</div><span class="badge bprog" style="cursor:default">En progreso</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Capturar datos de prospectos (Nombre, Mail, WhatsApp)</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Reservar Mi Cupo Gratuito Ahora"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Landing principal de captaci&oacute;n con temario y prueba social</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/inmersion-ia/confirmacion/</div><span class="badge bprog" style="cursor:default">En progreso</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Dirigir al grupo VIP de WhatsApp de inmediato</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Unirme al Grupo Oficial de WhatsApp"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Thank You Page con instrucciones de acceso</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/inmersion-ia/sesion-1/</div><span class="badge bpend" style="cursor:default">Pendiente</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Transmisi&oacute;n en vivo y descarga de material Sesi&oacute;n 1</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Descargar Gu&iacute;a de Trabajo Sesi&oacute;n 1"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Sala privada con reproductor YouTube y chat en vivo</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/inmersion-ia/sesion-2/</div><span class="badge bpend" style="cursor:default">Pendiente</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Transmisi&oacute;n en vivo y pr&aacute;ctica t&eacute;cnica Sesi&oacute;n 2</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Acceder al Promptbook y Plantillas"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Sala privada con reproductor YouTube y recursos</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/inmersion-ia/sesion-3/</div><span class="badge bpend" style="cursor:default">Pendiente</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Transmisi&oacute;n y primera presentaci&oacute;n de oferta Academia</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Ver Oferta Especial de Academia Canal Ejecutivo"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Sala con bot&oacute;n din&aacute;mico revelado al momento del pitch</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/inmersion-ia/sesion-4/</div><span class="badge bpend" style="cursor:default">Pendiente</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Transmisi&oacute;n final, cierre con urgencia y bonos l&iacute;mite</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Garantizar Mi Membres&iacute;a con Bonos Exclusivos"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Sala de cierre con contador regresivo y bot&oacute;n a checkout</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/academia/</div><span class="badge bprog" style="cursor:default">En progreso</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>P&aacute;gina oficial de ventas de la membres&iacute;a</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Inscribirme a la Academia Ahora"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Carta de ventas con curr&iacute;culo, docentes y testimonios</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/academia/registro/</div><span class="badge bpend" style="cursor:default">Pendiente</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Creaci&oacute;n previa de usuario y contrase&ntilde;a en plataforma</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Continuar al Pago Seguro"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Formulario de cuenta LearnPress integrado al flujo</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/academia/pago/</div><span class="badge bprog" style="cursor:default">En progreso</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Procesar el cobro seguro de la membres&iacute;a</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Completar Mi Orden Segura"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Checkout minimalista de WooCommerce (1 columna)</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/academia/bienvenida/</div><span class="badge bpend" style="cursor:default">Pendiente</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Onboarding inmediato y reducci&oacute;n de reembolsos</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Acceder a Mi Primer Curso en LearnPress"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Confirmaci&oacute;n de compra con video y credenciales</span></div></div>
+          <div class="pgc"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="pgslug">/referidos/</div><span class="badge bpend" style="cursor:default">Pendiente</span></div><div class="pgrow"><span class="pgkey">Objetivo:</span><span>Incentivar la viralidad y captaci&oacute;n org&aacute;nica</span></div><div class="pgrow"><span class="pgkey">CTA:</span><span>"Copiar Mi Enlace de Invitaci&oacute;n Exclusivo"</span></div><div class="pgrow"><span class="pgkey">Funci&oacute;n:</span><span>Portal de recomendados con recompensas por amigos inscritos</span></div></div>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="gap">
+        <div class="sh"><h2>Flujos de Automatizaci&oacute;n &mdash; Make</h2><p>Escenarios l&oacute;gicos orquestados mediante Webhooks</p></div>
+        <div class="fbox"><div class="ftitle"><i class="fa-solid fa-arrows-split-up-and-left"></i> Flujo 1 &mdash; Captura y Distribuci&oacute;n de Datos</div><div class="fnodes"><div class="fnode"><i class="fa-solid fa-file-pen"></i> Formulario Elementor</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode" style="border-color:#7C3AED;color:#7C3AED"><i class="fa-solid fa-bolt"></i> Make (Webhook)</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode"><i class="fa-solid fa-database"></i> CRM / Base de Datos</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode"><i class="fa-solid fa-envelope"></i> Secuencia Email</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode" style="border-color:#10B981;color:#10B981"><i class="fa-brands fa-whatsapp"></i> WhatsApp</div></div></div>
+        <div class="fbox" style="margin-bottom:0"><div class="ftitle"><i class="fa-solid fa-route"></i> Flujo 2 &mdash; Ciclo de Conversi&oacute;n del Alumno</div><div class="fnodes"><div class="fnode"><i class="fa-solid fa-user-plus"></i> Registro</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode"><i class="fa-solid fa-circle-check"></i> Confirmaci&oacute;n</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode"><i class="fa-solid fa-bell"></i> Recordatorio</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode"><i class="fa-solid fa-chalkboard-user"></i> Sesi&oacute;n Live</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode" style="border-color:#F59E0B;color:#D97706"><i class="fa-solid fa-fire"></i> Oferta Academia</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode"><i class="fa-solid fa-credit-card"></i> Checkout</div><div class="farr"><i class="fa-solid fa-arrow-right"></i></div><div class="fnode" style="border-color:#10B981;color:#10B981"><i class="fa-solid fa-graduation-cap"></i> Bienvenida LMS</div></div></div>
+      </div>
+
+      <hr class="divider">
+      <div class="gap">
+        <div class="sh"><h2>Ecosistema Tecnol&oacute;gico &mdash; 9 Herramientas</h2><p>Infraestructura existente sin desarrollo desde cero</p></div>
+        <div class="tg">
+          <div class="tcard"><div class="tlogo"><i class="fa-brands fa-wordpress"></i></div><div><div class="tname">WordPress</div><div class="trole">CMS Central &amp; Host</div><div class="tok"><i class="fa-solid fa-circle-check"></i> Operativo</div></div></div>
+          <div class="tcard"><div class="tlogo"><i class="fa-brands fa-elementor"></i></div><div><div class="tname">Elementor</div><div class="trole">Dise&ntilde;o Visual &amp; Landings</div><div class="tok"><i class="fa-solid fa-circle-check"></i> Operativo</div></div></div>
+          <div class="tcard"><div class="tlogo" style="color:#7C3AED"><i class="fa-solid fa-graduation-cap"></i></div><div><div class="tname">LearnPress</div><div class="trole">Campus Virtual &amp; Cursos</div><div class="tok"><i class="fa-solid fa-circle-check"></i> Operativo</div></div></div>
+          <div class="tcard"><div class="tlogo" style="color:#9333EA"><i class="fa-solid fa-cart-shopping"></i></div><div><div class="tname">WooCommerce</div><div class="trole">Checkout &amp; Membres&iacute;as</div><div class="tok"><i class="fa-solid fa-circle-check"></i> Operativo</div></div></div>
+          <div class="tcard"><div class="tlogo" style="color:#7C3AED"><i class="fa-solid fa-bolt"></i></div><div><div class="tname">Make</div><div class="trole">Automatizaci&oacute;n &amp; Webhooks</div><div class="tok"><i class="fa-solid fa-circle-check"></i> Conectado</div></div></div>
+          <div class="tcard"><div class="tlogo" style="color:#EF4444"><i class="fa-brands fa-youtube"></i></div><div><div class="tname">YouTube</div><div class="trole">Streaming 4 Sesiones Live</div><div class="tok"><i class="fa-solid fa-circle-check"></i> Configurado</div></div></div>
+          <div class="tcard"><div class="tlogo" style="color:#10B981"><i class="fa-brands fa-whatsapp"></i></div><div><div class="tname">WhatsApp</div><div class="trole">Comunidad &amp; Recordatorios</div><div class="tok"><i class="fa-solid fa-circle-check"></i> Configurado</div></div></div>
+          <div class="tcard"><div class="tlogo" style="color:#F59E0B"><i class="fa-solid fa-chart-pie"></i></div><div><div class="tname">Google Analytics</div><div class="trole">M&eacute;tricas &amp; Embudo GA4</div><div class="tok"><i class="fa-solid fa-circle-check"></i> Conectado</div></div></div>
+          <div class="tcard"><div class="tlogo" style="color:#2563EB"><i class="fa-brands fa-meta"></i></div><div><div class="tname">Meta Pixel</div><div class="trole">Tracking &amp; Campa&ntilde;as Ads</div><div class="tok"><i class="fa-solid fa-circle-check"></i> Conectado</div></div></div>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="gap">
+        <div class="sh"><h2>KPIs del Lanzamiento</h2><p>Tablero de objetivos num&eacute;ricos para validar la rentabilidad del funnel</p></div>
+        <div class="kg">
+          <div class="kc"><div class="kclbl">Visitas Landing</div><div class="kcval">10,000+</div><div class="kcnote"><i class="fa-solid fa-bullseye"></i> Tr&aacute;fico combinado</div></div>
+          <div class="kc"><div class="kclbl">Registros (Leads)</div><div class="kcval">3,500</div><div class="kcnote"><i class="fa-solid fa-user-plus"></i> Contactos calificados</div></div>
+          <div class="kc"><div class="kclbl">Tasa Conversi&oacute;n LP</div><div class="kcval">35.0%</div><div class="kcnote"><i class="fa-solid fa-arrow-trend-up"></i> Benchmark alta conv.</div></div>
+          <div class="kc"><div class="kclbl">Personas en WhatsApp</div><div class="kcval">2,800</div><div class="kcnote"><i class="fa-brands fa-whatsapp"></i> 80% de registrados</div></div>
+          <div class="kc"><div class="kclbl">Asistencia Sesi&oacute;n 1</div><div class="kcval">1,400</div><div class="kcnote"><i class="fa-solid fa-users"></i> 40% asistencia inicial</div></div>
+          <div class="kc"><div class="kclbl">Asistencia Sesi&oacute;n 2</div><div class="kcval">1,100</div><div class="kcnote"><i class="fa-solid fa-users"></i> Retenci&oacute;n activa</div></div>
+          <div class="kc"><div class="kclbl">Asistencia Sesi&oacute;n 3</div><div class="kcval">950</div><div class="kcnote"><i class="fa-solid fa-fire"></i> Momento del Pitch</div></div>
+          <div class="kc"><div class="kclbl">Asistencia Sesi&oacute;n 4</div><div class="kcval">850</div><div class="kcnote"><i class="fa-solid fa-bolt"></i> Cierre definitivo</div></div>
+          <div class="kc"><div class="kclbl">Conversi&oacute;n a Academia</div><div class="kcval">4.5%</div><div class="kcnote"><i class="fa-solid fa-chart-line"></i> Sobre total de leads</div></div>
+          <div class="kc"><div class="kclbl">Ventas Totales</div><div class="kcval">150+</div><div class="kcnote"><i class="fa-solid fa-bag-shopping"></i> Nuevos miembros</div></div>
+          <div class="kc"><div class="kclbl">Ticket Promedio</div><div class="kcval">$197 USD</div><div class="kcnote"><i class="fa-solid fa-tag"></i> Acceso anual / paquete</div></div>
+          <div class="kc"><div class="kclbl">Costo por Lead (CPL)</div><div class="kcval">&lt;$0.65</div><div class="kcnote"><i class="fa-solid fa-dollar-sign"></i> Optimizaci&oacute;n Meta Ads</div></div>
+          <div class="kc"><div class="kclbl">Referidos Activos</div><div class="kcval">450</div><div class="kcnote"><i class="fa-solid fa-share-nodes"></i> Adquisici&oacute;n org&aacute;nica</div></div>
+          <div class="kc"><div class="kclbl">Conversi&oacute;n Referidos</div><div class="kcval">6.8%</div><div class="kcnote"><i class="fa-solid fa-award"></i> Mayor confianza</div></div>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div>
+        <div class="sh"><h2>Checklist Maestro de Lanzamiento</h2><p>Verificaci&oacute;n interactiva de los 16 puntos cr&iacute;ticos previos al tr&aacute;fico</p></div>
+        <div class="ckg" id="ckContainer"></div>
+      </div>
+    </div>
+
+  </div><!-- /tab-panels -->
+</div><!-- /main -->
+<script>
+const TASKS=[
+{id:1,fase:"Fase 1",tarea:"Definir propuesta de valor",resp:"Estratega Digital",ses:"Ses1",pri:"Alta",est:"Pendiente",ent:"Propuesta de valor"},
+{id:2,fase:"Fase 1",tarea:"Definir publico objetivo y avatar",resp:"Copywriter & Marketing",ses:"Ses1",pri:"Alta",est:"Pendiente",ent:"Publico objetivo definido"},
+{id:3,fase:"Fase 1",tarea:"Definir oferta irresistible Academia",resp:"Director de Proyecto",ses:"Ses1",pri:"Alta",est:"Pendiente",ent:"Oferta estructurada"},
+{id:4,fase:"Fase 1",tarea:"Definir estructura del funnel",resp:"Arquitecto de Funnels",ses:"Ses1",pri:"Alta",est:"Pendiente",ent:"Arquitectura del funnel"},
+{id:5,fase:"Fase 1",tarea:"Definir recorrido del usuario (UX)",resp:"Disenador UX/UI",ses:"Ses1",pri:"Media",est:"Pendiente",ent:"Wireflow de recorrido"},
+{id:6,fase:"Fase 1",tarea:"Definir CTAs principales",resp:"Estratega de Conversion",ses:"Ses1",pri:"Alta",est:"Pendiente",ent:"Estructura de conversion"},
+{id:7,fase:"Fase 1",tarea:"Definir mapa de paginas necesarias",resp:"Arquitecto Web",ses:"Ses1",pri:"Media",est:"Pendiente",ent:"Mapa de paginas"},
+{id:8,fase:"Fase 1",tarea:"Definir herramientas de medicion",resp:"Data & Media Buyer",ses:"Ses1",pri:"Alta",est:"Pendiente",ent:"Plan de medicion"},
+{id:9,fase:"Fase 2",tarea:"Crear landing de registro en Elementor",resp:"Desarrollador Frontend",ses:"Ses2",pri:"Alta",est:"Pendiente",ent:"Landing funcional"},
+{id:10,fase:"Fase 2",tarea:"Disenar hero section de alto impacto",resp:"Disenador UI",ses:"Ses2",pri:"Alta",est:"Pendiente",ent:"Hero section optimizado"},
+{id:11,fase:"Fase 2",tarea:"Crear seccion de beneficios",resp:"Copywriter & UI",ses:"Ses2",pri:"Media",est:"Pendiente",ent:"Seccion de beneficios"},
+{id:12,fase:"Fase 2",tarea:"Crear programa de las 4 sesiones",resp:"Disenador Web",ses:"Ses2",pri:"Media",est:"Pendiente",ent:"Programa interactivo"},
+{id:13,fase:"Fase 2",tarea:"Integrar formulario de captacion",resp:"Desarrollador Web",ses:"Ses2",pri:"Alta",est:"Pendiente",ent:"Formulario validado"},
+{id:14,fase:"Fase 2",tarea:"Crear pagina de confirmacion",resp:"Desarrollador Web",ses:"Ses2",pri:"Alta",est:"Pendiente",ent:"Pagina de confirmacion"},
+{id:15,fase:"Fase 2",tarea:"Configurar CTAs estrategicos y microcopys",resp:"Copywriter",ses:"Ses2",pri:"Alta",est:"Pendiente",ent:"CTAs y microcopys"},
+{id:16,fase:"Fase 2",tarea:"Integrar enlace dinamico a WhatsApp",resp:"Especialista Make",ses:"Ses2",pri:"Alta",est:"Pendiente",ent:"Integracion WhatsApp"},
+{id:17,fase:"Fase 2",tarea:"Optimizar responsive movil",resp:"Disenador Frontend",ses:"Ses2",pri:"Alta",est:"Pendiente",ent:"Diseno responsive movil"},
+{id:18,fase:"Fase 2",tarea:"Configurar eventos basicos de tracking",resp:"Especialista Analitica",ses:"Ses2",pri:"Alta",est:"Pendiente",ent:"Tracking basico"},
+{id:19,fase:"Fase 3",tarea:"Crear landing oficial de la Academia",resp:"Desarrollador Web",ses:"Ses3",pri:"Alta",est:"Pendiente",ent:"Pagina Academia"},
+{id:20,fase:"Fase 3",tarea:"Presentar beneficios de membresia",resp:"Copywriter & UI",ses:"Ses3",pri:"Alta",est:"Pendiente",ent:"Beneficios de membresia"},
+{id:21,fase:"Fase 3",tarea:"Mostrar catalogo de cursos en LearnPress",resp:"Coordinador LMS",ses:"Ses3",pri:"Media",est:"Pendiente",ent:"Catalogo en LearnPress"},
+{id:22,fase:"Fase 3",tarea:"Estructurar oferta especial de lanzamiento",resp:"Estratega Digital",ses:"Ses3",pri:"Alta",est:"Pendiente",ent:"Oferta con bonos"},
+{id:23,fase:"Fase 3",tarea:"Crear producto suscripcion en WooCommerce",resp:"E-commerce Specialist",ses:"Ses3",pri:"Alta",est:"Pendiente",ent:"Producto/membresia"},
+{id:24,fase:"Fase 3",tarea:"Configurar pasarela y checkout",resp:"Desarrollador Web",ses:"Ses3",pri:"Alta",est:"Pendiente",ent:"Checkout sin friccion"},
+{id:25,fase:"Fase 3",tarea:"Configurar asignacion automatica LearnPress",resp:"Administrador LMS",ses:"Ses3",pri:"Alta",est:"Pendiente",ent:"Auto-enrolamiento LMS"},
+{id:26,fase:"Fase 3",tarea:"Crear pagina de bienvenida",resp:"Disenador UI/UX",ses:"Ses3",pri:"Media",est:"Pendiente",ent:"Pagina de bienvenida"},
+{id:27,fase:"Fase 3",tarea:"Configurar escenarios Make (Webhooks)",resp:"Automation Lead",ses:"Ses3",pri:"Alta",est:"Pendiente",ent:"Automatizaciones Make"},
+{id:28,fase:"Fase 3",tarea:"Configurar emails transaccionales",resp:"Email Marketer",ses:"Ses3",pri:"Alta",est:"Pendiente",ent:"Emails transaccionales"},
+{id:29,fase:"Fase 3",tarea:"Crear flujo de seguimiento post-sesion",resp:"Estratega de Funnels",ses:"Ses3",pri:"Media",est:"Pendiente",ent:"Flujo de seguimiento"},
+{id:30,fase:"Fase 4",tarea:"Auditoria completa end-to-end del funnel",resp:"Tech Lead & QA",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"Funnel probado"},
+{id:31,fase:"Fase 4",tarea:"Prueba real de registro con multiples correos",resp:"Tester QA",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"Validacion de registro"},
+{id:32,fase:"Fase 4",tarea:"Verificar entrega de correos (DKIM/SPF)",resp:"QA Specialist",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"Emails verificados"},
+{id:33,fase:"Fase 4",tarea:"Verificar flujos y links de WhatsApp",resp:"Automation Tester",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"WhatsApp verificado"},
+{id:34,fase:"Fase 4",tarea:"Simulacion de compra y transaccion de prueba",resp:"E-commerce Specialist",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"Checkout probado"},
+{id:35,fase:"Fase 4",tarea:"Comprobar auto-login y acceso al aula",resp:"Coordinador LMS",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"Acceso LMS comprobado"},
+{id:36,fase:"Fase 4",tarea:"Revision rigurosa de experiencia movil",resp:"Frontend QA",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"Version movil revisada"},
+{id:37,fase:"Fase 4",tarea:"Configurar conversiones en Google Analytics 4",resp:"Data Analyst",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"Tracking GA4"},
+{id:38,fase:"Fase 4",tarea:"Test de eventos de Meta Pixel & CAPI",resp:"Media Buyer",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"Tracking Meta Pixel"},
+{id:39,fase:"Fase 4",tarea:"Establecer KPIs y metas de conversion",resp:"Growth Director",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"KPIs definidos"},
+{id:40,fase:"Fase 4",tarea:"Montar dashboard de metricas en tiempo real",resp:"BI Developer",ses:"Ses4",pri:"Media",est:"Pendiente",ent:"Dashboard de metricas"},
+{id:41,fase:"Fase 4",tarea:"Configurar sistema de referidos en /referidos/",resp:"Growth Engineer",ses:"Ses4",pri:"Media",est:"Pendiente",ent:"Sistema de referidos"},
+{id:42,fase:"Fase 4",tarea:"Preparar checklist final de lanzamiento",resp:"Project Manager",ses:"Ses4",pri:"Alta",est:"Pendiente",ent:"Checklist final"},
+{id:43,fase:"Fase 4",tarea:"Definir acciones de optimizacion post-lanzamiento",resp:"Estratega Senior",ses:"Ses4",pri:"Media",est:"Pendiente",ent:"Plan de optimizacion"}
+];
+
+const CK=[
+"Landing /inmersion-ia/ publicada y activa",
+"Formulario de registro funcionando correctamente",
+"Email de confirmacion entregado sin fallos",
+"Enlace y grupo de WhatsApp activos",
+"YouTube Live preparado y enlace privado listo",
+"Paginas de sesiones (1-4) publicadas y activas",
+"Academia /academia/ publicada con oferta activa",
+"WooCommerce configurado con metodos de pago",
+"Checkout (/academia/pago/) probado y funcional",
+"LearnPress configurado con enrolamiento automatico",
+"Make: todos los escenarios conectados y activos",
+"Google Analytics 4 con conversiones configuradas",
+"Meta Pixel & CAPI activados y validados",
+"Experiencia movil revisada en 3 dispositivos",
+"Prueba completa end-to-end del funnel aprobada",
+"Sistema de referidos /referidos/ preparado"
+];
+
+const SF=["Pendiente","En progreso","En revision","Completado"];
+const SL_MAP={"Ses1":"Sesion 1","Ses2":"Sesion 2","Ses3":"Sesion 3","Ses4":"Sesion 4"};
+let tasks=JSON.parse(localStorage.getItem('ce_v4'))||JSON.parse(JSON.stringify(TASKS));
+let ck=JSON.parse(localStorage.getItem('ce_ck4'))||CK.map((t,i)=>({id:i,t,done:false}));
+
+function save(){localStorage.setItem('ce_v4',JSON.stringify(tasks));localStorage.setItem('ce_ck4',JSON.stringify(ck));updateProg()}
+function updateProg(){
+  const done=tasks.filter(t=>t.est==='Completado').length,tot=tasks.length,pct=Math.round(done/tot*100);
+  const b=document.getElementById('pctBar'),txt=document.getElementById('pctTxt'),ctr=document.getElementById('pctCtr'),tc=document.getElementById('tCount');
+  if(b)b.style.width=pct+'%';if(txt)txt.textContent=pct+'%';if(ctr)ctr.textContent=done+' de '+tot+' Tareas';if(tc)tc.textContent=tot;
+}
+function switchTab(id){
+  document.querySelectorAll('.tab-btn,[data-tab]').forEach(el=>{if(el.dataset.tab)el.classList.toggle('active',el.dataset.tab===id)});
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+id));
+}
+document.querySelectorAll('[data-tab]').forEach(el=>el.addEventListener('click',()=>switchTab(el.dataset.tab)));
+
+function cycleStatus(id){
+  const t=tasks.find(x=>x.id===id);if(!t)return;
+  t.est=SF[(SF.indexOf(t.est)+1)%SF.length];
+  save();renderT();
+}
+function renderT(){
+  const tb=document.getElementById('tbody');if(!tb)return;
+  const fs=document.getElementById('fSes').value,fe=document.getElementById('fEst').value,fp=document.getElementById('fPri').value,fq=document.getElementById('fQ').value.toLowerCase();
+  const fd=tasks.filter(t=>
+    (fs==='all'||t.ses===fs)&&
+    (fe==='all'||(fe==='En revision'?t.est==='En revision':t.est===fe))&&
+    (fp==='all'||t.pri===fp)&&
+    (t.tarea.toLowerCase().includes(fq)||t.resp.toLowerCase().includes(fq)||t.ent.toLowerCase().includes(fq))
+  );
+  if(!fd.length){tb.innerHTML='<tr><td colspan="7" style="text-align:center;padding:24px;color:#94A3B8">Sin resultados.</td></tr>';return}
+  tb.innerHTML='';
+  fd.forEach(t=>{
+    let bc='bpend',bi='fa-circle-dot';
+    if(t.est==='En progreso'){bc='bprog';bi='fa-spinner fa-spin'}
+    if(t.est==='En revision'){bc='brev';bi='fa-eye'}
+    if(t.est==='Completado'){bc='bdone';bi='fa-circle-check'}
+    let pc='palta';if(t.pri==='Media')pc='pmedia';if(t.pri==='Baja')pc='pbaja';
+    const sl=SL_MAP[t.ses]||t.ses;
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td><span style="font-size:11px;font-weight:700;color:#64748B">'+t.fase+'</span></td><td style="font-weight:600">'+t.tarea+'</td><td style="color:#64748B;font-size:12px">'+t.resp+'</td><td><span style="background:#EFF6FF;color:#2563EB;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:700">'+sl+'</span></td><td><span class="pbadge '+pc+'">'+t.pri+'</span></td><td><span class="badge '+bc+'" onclick="cycleStatus('+t.id+')" title="Clic para cambiar"><i class="fa-solid '+bi+'"></i> '+t.est+'</span></td><td style="color:#2563EB;font-size:12px;font-weight:600">'+t.ent+'</td>';
+    tb.appendChild(tr);
+  });
+}
+function toggleCk(i){ck[i].done=!ck[i].done;save();renderCk()}
+function renderCk(){
+  const c=document.getElementById('ckContainer');if(!c)return;c.innerHTML='';
+  ck.forEach((item,i)=>{
+    const d=document.createElement('div');d.className='cki'+(item.done?' done':'');d.onclick=()=>toggleCk(i);
+    d.innerHTML='<div class="ckcb">'+(item.done?'<i class="fa-solid fa-check"></i>':'')+'</div><span class="ckt">'+item.t+'</span>';
+    c.appendChild(d);
+  });
+}
+
+// Sidebar desktop
+const sidebar=document.getElementById('sidebar'),main=document.getElementById('main'),stBtn=document.getElementById('stBtn'),mobBtn=document.getElementById('mobBtn'),ov=document.getElementById('ov');
+stBtn&&stBtn.addEventListener('click',()=>{sidebar.classList.toggle('collapsed');main.classList.toggle('expanded')});
+mobBtn&&mobBtn.addEventListener('click',()=>{sidebar.classList.toggle('open');ov.classList.toggle('active')});
+ov&&ov.addEventListener('click',()=>{sidebar.classList.remove('open');ov.classList.remove('active')});
+
+document.addEventListener('DOMContentLoaded',()=>{renderT();renderCk();updateProg()});
+</script>
+</body>
+</html>

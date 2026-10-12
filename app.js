@@ -7,25 +7,25 @@
  * ─────────────────────────────────────────────────────────────
  */
 const SITE_CONFIG = {
-  // Número de WhatsApp del equipo (sin + ni espacios, incluir código de país)
-  whatsappNumber: '51999999999',
+  // Número de WhatsApp de Inspírate Creator (+51 902830073)
+  whatsappNumber: '51902830073',
 
-  // Fecha objetivo del countdown (ISO 8601, hora Lima UTC-5)
-  eventDate: '2026-10-18T09:00:00-05:00',
+  // Fecha objetivo del countdown (ISO 8601, hora Lima UTC-5: Sábado 28 Noviembre 2026, 6:00 PM)
+  eventDate: '2026-11-28T18:00:00-05:00',
 
-  // Tarifario oficial en Soles (PEN): S/ 99 individual, S/ 79 grupal (a partir de 2)
+  // Tarifario oficial en Soles (PEN): S/ 119 individual, S/ 99 grupal (a partir de 2)
   tiers: {
     individual: {
       id: 'individual',
       name: 'Pase Individual (1 Persona)',
-      price: 99,
+      price: 119,
       unitLabel: 'PEN · único pago',
-      perks: '✓ Acceso total al taller 4 hrs + LinkedIn con IA + Portafolio Web en vivo + Certificado UNMSM + Coffee Break'
+      perks: '✓ Acceso total al taller 4 hrs + LinkedIn con IA + Portafolio Web en vivo + Certificado con QR (Validez Internacional) + Coffee Break'
     },
     grupal: {
       id: 'grupal',
       name: 'Pase Grupal (A partir de 2 personas)',
-      price: 79,
+      price: 99,
       unitLabel: 'PEN · por cada uno (mínimo 2 personas)',
       perks: '✓ Mismos beneficios completos para cada participante + Asientos contiguos en Coworking ASCE (¡Ahorran S/ 20 c/u!)'
     }
@@ -213,93 +213,34 @@ function toggleFaq(btn) {
 }
 
 /* ==========================================================================
-   6. REGISTRATION MODAL & DIRECT WHATSAPP CHECKOUT
+   6. DIRECT WHATSAPP CHECKOUT & CONTACT
    ========================================================================== */
-function openRegistrationModal(tierKey = 'grupal') {
-  const modal = document.getElementById('regModal');
-  const tierSelect = document.getElementById('formTierSelect');
-  
-  if (tierSelect) {
-    const key = String(tierKey).toLowerCase();
-    if (key.includes('ind') || key.includes('99') || key.includes('1')) {
-      tierSelect.value = 'individual';
-    } else {
-      tierSelect.value = 'grupal';
-    }
+function goToWhatsApp(tierKey = 'general') {
+  const number = SITE_CONFIG.whatsappNumber || '51902830073';
+  const key = String(tierKey).toLowerCase();
+  let text = '';
+
+  if (key.includes('ind') || key.includes('119') || key.includes('individual')) {
+    text = `Hola Inspírate Creator, deseo asegurar mi cupo para el Taller Presencial Marca Profesional con IA del 28/11/2026 (Pase Individual - S/ 119). ¿Me comparten los datos de pago para transferir?`;
+  } else if (key.includes('grup') || key.includes('99') || key.includes('grupal')) {
+    text = `Hola Inspírate Creator, deseamos asegurar nuestros cupos para el Taller Presencial Marca Profesional con IA del 28/11/2026 (Pase Grupal - S/ 99 c/u). ¿Me comparten los datos de pago para transferir?`;
+  } else {
+    text = `Hola Inspírate Creator, deseo información y asegurar mi cupo para el Taller Presencial Marca Profesional con IA del 28/11/2026 (Coworking ASCE, 6:00 PM - 10:00 PM).`;
   }
 
-  updateModalPriceDisplay();
-
-  if (modal) {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeRegistrationModal() {
-  const modal = document.getElementById('regModal');
-  if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-}
-
-// Close on outside click
-window.addEventListener('click', (e) => {
-  const modal = document.getElementById('regModal');
-  if (e.target === modal) {
-    closeRegistrationModal();
-  }
-});
-
-function updateModalPriceDisplay() {
-  const tierSelect   = document.getElementById('formTierSelect');
-  const priceDisplay = document.getElementById('modalSummaryPrice');
-  const perksDisplay = document.getElementById('modalSummaryPerks');
-  const modalTitle   = document.getElementById('modalPlanTitle');
-
-  if (!tierSelect || !priceDisplay) return;
-
-  const key = tierSelect.value || 'grupal';
-  const tierData = SITE_CONFIG.tiers[key] || SITE_CONFIG.tiers.grupal;
-
-  if (modalTitle) modalTitle.textContent = `Inscripción: ${tierData.name}`;
-  priceDisplay.textContent = key === 'grupal' ? `S/ ${tierData.price} PEN c/u` : `S/ ${tierData.price} PEN`;
-  if (perksDisplay) {
-    perksDisplay.innerHTML = tierData.perks;
-  }
-}
-
-function handleRegistrationSubmit(event) {
-  event.preventDefault();
-
-  const fullName = document.getElementById('formFullName').value.trim();
-  const dni      = document.getElementById('formDni').value.trim();
-  const phone    = document.getElementById('formPhone').value.trim();
-  const email    = document.getElementById('formEmail').value.trim();
-  const tierKey  = document.getElementById('formTierSelect').value;
-
-  const tierData = SITE_CONFIG.tiers[tierKey] || SITE_CONFIG.tiers.grupal;
-  const { whatsappNumber } = SITE_CONFIG;
-  const priceText = tierKey === 'grupal' 
-    ? `S/ 79 PEN por persona (tarifa grupal a partir de 2 personas)` 
-    : `S/ 99 PEN (Pase individual)`;
-
-  const message = `🏛️ *SOLICITUD DE INSCRIPCIÓN - TALLER MARCA CON IA*
-*Canal Ejecutivo & Inspírate Creator (Respaldo UNMSM)*
-
-👤 *Nombre:* ${fullName}
-📄 *DNI/Doc:* ${dni}
-📱 *WhatsApp:* ${phone}
-✉️ *Correo:* ${email}
-🎟️ *Tarifa:* ${tierData.name}
-💰 *Inversión:* ${priceText}
-
-_Hola, he completado mi ficha en la web oficial y deseo coordinar los datos de pago (Yape/Plin/Transferencia) para asegurar los cupos y la emisión de los certificados UNMSM._`;
-
-  const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  const waUrl = `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
   window.open(waUrl, '_blank');
-  closeRegistrationModal();
+}
+
+// Alias de compatibilidad
+function openRegistrationModal(tierKey) {
+  goToWhatsApp(tierKey);
+}
+function closeRegistrationModal() {}
+function updateModalPriceDisplay() {}
+function handleRegistrationSubmit(event) {
+  if (event) event.preventDefault();
+  goToWhatsApp('general');
 }
 
 /* ==========================================================================

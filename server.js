@@ -15,16 +15,19 @@ const MIME_TYPES = {
 
 const server = http.createServer((req, res) => {
   let reqPath = req.url === '/' ? '/index.html' : req.url;
-  reqPath = reqPath.split('?')[0];
+  reqPath = decodeURIComponent(reqPath.split('?')[0]);
+  if (reqPath === '/plan' || reqPath === '/plan-trabajo' || reqPath === '/dashboard') {
+    reqPath = '/plan-trabajo-academia-canal-ejecutivo.html';
+  }
   const filePath = path.join(__dirname, reqPath);
 
   fs.readFile(filePath, (err, content) => {
     if (err) {
       if (err.code === 'ENOENT') {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=UTF-8' });
         res.end('404 Not Found');
       } else {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.writeHead(500, { 'Content-Type': 'text/plain; charset=UTF-8' });
         res.end('Server Error');
       }
       return;
@@ -38,5 +41,10 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`====================================================`);
+  console.log(` Servidor local activo en:`);
+  console.log(` - Landing Taller:       http://localhost:${PORT}/`);
+  console.log(` - Plan de Trabajo Web:  http://localhost:${PORT}/plan-trabajo-academia-canal-ejecutivo.html`);
+  console.log(` - Acceso directo:       http://localhost:${PORT}/plan`);
+  console.log(`====================================================`);
 });
