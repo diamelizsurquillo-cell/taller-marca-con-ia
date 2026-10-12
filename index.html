@@ -94,7 +94,7 @@
         <a href="#transformacion" class="nav-link">Beneficios</a>
         <a href="#programa" class="nav-link">Programa</a>
         <a href="#ponentes" class="nav-link">Ponentes</a>
-        <a href="#simulador" class="nav-link">Lo que crearás</a>
+        <a href="#entregables" class="nav-link">Lo que crearás</a>
         <a href="#precios" class="nav-link">Inversión</a>
         <a href="#faq" class="nav-link">Preguntas</a>
       </nav>
@@ -197,7 +197,7 @@
               <span>Asegurar Mi Cupo por WhatsApp</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#simulador" class="btn btn-secondary btn-lg" id="heroSecondaryCta">
+            <a href="#entregables" class="btn btn-secondary btn-lg" id="heroSecondaryCta">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
               Ver lo que vas a construir
             </a>
@@ -601,116 +601,8 @@ optimizado para ejecutivos de alta dirección..."</span>
       </div>
     </section>
 
-    <!-- SIMULADOR INTERACTIVO / DEMO EN VIVO -->
-    <section class="simulator-section section-padding" id="simulador">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-pill">DEMOSTRACIÓN INTERACTIVA</span>
-          <h2 class="section-title">Pruébalo Tú Mismo: El Portafolio que Tendrás</h2>
-          <p class="section-subtitle">
-            Personaliza en tiempo real los campos de este simulador para ver cómo la Inteligencia Artificial transformará tu trayectoria en un sitio web moderno de nivel internacional.
-          </p>
-        </div>
-
-        <div class="simulator-wrapper">
-          <!-- Control Panel -->
-          <div class="simulator-controls">
-            <h4 class="controls-title">⚙️ Personaliza la simulación en vivo:</h4>
-            
-            <div class="form-group">
-              <label for="simInputName">Tu Nombre Completo:</label>
-              <input type="text" id="simInputName" value="Dra. Mariana Castillo" placeholder="Ingresa tu nombre">
-            </div>
-
-            <div class="form-group">
-              <label for="simInputRole">Tu Especialidad o Titular Profesional:</label>
-              <input type="text" id="simInputRole" value="Directora de Marketing & Growth B2B" placeholder="Ej. Consultor de Finanzas">
-            </div>
-
-            <div class="form-group">
-              <label for="simInputPillar">Tus 3 Habilidades Clave (separadas por coma):</label>
-              <input type="text" id="simInputPillar" value="Growth Hacking, IA Aplicada, Negociación B2B" placeholder="Habilidades">
-            </div>
-
-            <div class="form-group">
-              <label for="simInputMetric">Tu Mayor Logro o Métrica de Impacto:</label>
-              <input type="text" id="simInputMetric" value="+185% de crecimiento en ingresos para clientes" placeholder="Métrica clave">
-            </div>
-
-            <div class="theme-selector">
-              <span class="theme-label">Estilo Visual del Portafolio:</span>
-              <div class="theme-buttons">
-                <button class="theme-btn active" data-theme="indigo" onclick="setSimTheme('indigo')">Indigo Pro</button>
-                <button class="theme-btn" data-theme="cyan" onclick="setSimTheme('cyan')">Cyber Aqua</button>
-                <button class="theme-btn" data-theme="gold" onclick="setSimTheme('gold')">Luxury Gold</button>
-              </div>
-            </div>
-
-            <div class="control-note">
-              <span>💡 En el taller te enseñaremos a conectar tu dominio propio y automatizar formularios directos a tu WhatsApp o correo.</span>
-            </div>
-          </div>
-
-          <!-- Dynamic Output Preview Frame -->
-          <div class="simulator-screen" id="simScreen">
-            <div class="screen-browser-top">
-              <span class="browser-dot"></span>
-              <span class="browser-dot"></span>
-              <span class="browser-dot"></span>
-              <div class="browser-url-input">
-                <span id="previewUrlDisplay">https://marianacastillo.dev</span>
-              </div>
-              <span class="badge-online">LIVE 🟢</span>
-            </div>
-
-            <div class="screen-body" id="simScreenBody">
-              <!-- Header Inside Preview -->
-              <nav class="sim-nav">
-                <span class="sim-brand" id="simOutBrand">MC</span>
-                <div class="sim-links">
-                  <span>Trayectoria</span>
-                  <span>Casos</span>
-                  <span class="contact-pill">Contactar</span>
-                </div>
-              </nav>
-
-              <!-- Hero Inside Preview -->
-              <div class="sim-hero-inner">
-                <span class="sim-badge-tag">✨ Portafolio Profesional Optimizado con IA</span>
-                <h2 class="sim-display-name" id="simOutName">Dra. Mariana Castillo</h2>
-                <p class="sim-display-role" id="simOutRole">Directora de Marketing & Growth B2B</p>
-                <p class="sim-display-bio">
-                  Especialista en conectar estrategia empresarial de alta dirección con tecnología emergente para escalar modelos de negocio sostenibles.
-                </p>
-
-                <div class="sim-pill-group" id="simOutPills">
-                  <span class="tag-pill">Growth Hacking</span>
-                  <span class="tag-pill">IA Aplicada</span>
-                  <span class="tag-pill">Negociación B2B</span>
-                </div>
-
-                <div class="sim-featured-metric">
-                  <div class="metric-icon-small">📈</div>
-                  <div>
-                    <span class="metric-title-small">Impacto Comprobado:</span>
-                    <strong class="metric-text-highlight" id="simOutMetric">+185% de crecimiento en ingresos para clientes</strong>
-                  </div>
-                </div>
-
-                <div class="sim-action-row">
-                  <button class="btn-sim-primary" onclick="alert('En el taller aprenderás cómo recibir contactos calificados en tu propio portafolio')">Descargar Dossier / Agendar Reunión</button>
-                  <span class="sim-cred-tag">💼 LinkedIn Verificado</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- ENTREGABLES TANGIBLES -->
-    <section class="deliverables-section section-padding">
+    <section class="deliverables-section section-padding" id="entregables">
       <div class="container">
         <div class="section-header text-center">
           <span class="section-pill">GARANTÍA DE RESULTADOS</span>
